@@ -1,0 +1,10 @@
+*.mp4
+__pycache__/
+data/
+cisyn/
+cisyn_*
+pred_seqs
+log/
+scr
+select
+.vscode
