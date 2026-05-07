@@ -1,0 +1,384 @@
+# Unified Joint Parameters — one block per joint, all properties together.
+# Simulation joint order = order of keys under "joints" (top-to-bottom).
+#
+# SOURCES:
+#   - robot.xml (SMPLSim): primary. limits_deg from joint range="low high", damping = joint damping / 4.
+#   - Fingers: no reference in robot (has L_Hand/R_Hand 3-dof only); limits set to reasonable anatomical ranges.
+
+# ============================================================================
+# PER-JOINT PARAMETERS (limits in degrees, stiffness, damping)
+# ============================================================================
+
+joints:
+  Pelvis:
+    # robot: freejoint, no limits/damping.
+    limits_deg: { x: [-180, 180], y: [-180, 180], z: [-180, 180] }
+    stiffness: 0
+    damping: 0
+
+  L_Hip:
+    # robot.xml limits; damping 15,10,10 → /4 = 3.75,2.5,2.5 (use max 3.75).
+    limits_deg: { x: [-160, 22.92], y: [-70, 70], z: [-28.65, 90] }
+    stiffness: 0
+    damping: 3.75
+
+  R_Hip:
+    # robot.xml limits; damping /4 → 3.75.
+    limits_deg: { x: [-160, 22.92], y: [-70, 70], z: [-90, 28.65] }
+    stiffness: 0
+    damping: 3.75
+
+  Torso:
+    # robot.xml limits; damping 15,20,20 → /4 = 5.
+    limits_deg: { x: [-25.78, 57.3], y: [-34.38, 34.38], z: [-34.38, 34.38] }
+    stiffness: 0
+    damping: 5
+
+  L_Knee:
+    # robot.xml limits; damping 8 → /4 = 2.
+    limits_deg: { x: [-5.16, 171.89], y: [-4.58, 6.88], z: [-6.88, 4.58] }
+    stiffness: 0
+    damping: 2
+
+  R_Knee:
+    # robot.xml limits; damping /4 = 2.
+    limits_deg: { x: [-5.16, 171.89], y: [-6.88, 4.58], z: [-4.58, 6.88] }
+    stiffness: 0
+    damping: 2
+
+  Spine:
+    # robot.xml limits; damping 15,8,12 → /4 → 3.75,2,3 (use 3).
+    limits_deg: { x: [-25.78, 57.3], y: [-34.38, 34.38], z: [-34.38, 34.38] }
+    stiffness: 0
+    damping: 3
+
+  L_Ankle:
+    # robot.xml limits; damping 6,3,6 → /4 → 1.5,0.75,1.5 (use 1.5).
+    limits_deg: { x: [-45.84, 45.84], y: [-74.48, 22.92], z: [-4.58, 4.58] }
+    stiffness: 0
+    damping: 1.5
+
+  R_Ankle:
+    # robot.xml limits; damping /4 = 1.5.
+    limits_deg: { x: [-45.84, 45.84], y: [-22.92, 74.48], z: [-4.58, 4.58] }
+    stiffness: 0
+    damping: 1.5
+
+  Chest:
+    # robot.xml limits; damping 15,8,12 → /4 = 3.
+    limits_deg: { x: [-25.78, 57.3], y: [-34.38, 34.38], z: [-34.38, 34.38] }
+    stiffness: 0
+    damping: 3
+
+  L_Toe:
+    # robot.xml limits; no damping in robot → use 0.25.
+    limits_deg: { x: [-91.67, 22.92], y: [-4.58, 4.58], z: [-4.58, 4.58] }
+    stiffness: 0
+    damping: 0.25
+
+  R_Toe:
+    # robot.xml limits; no damping in robot → use 0.25.
+    limits_deg: { x: [-91.67, 22.92], y: [-4.58, 4.58], z: [-4.58, 4.58] }
+    stiffness: 0
+    damping: 0.25
+
+  Neck:
+    # robot.xml limits; damping 10 → /4 = 2.5.
+    limits_deg: { x: [-28.65, 57.3], y: [-40.11, 40.11], z: [-40.11, 40.11] }
+    stiffness: 0
+    damping: 2.5
+
+  L_Thorax:
+    # robot.xml limits; damping 20 → /4 = 5.
+    limits_deg: { x: [-10.89, 4.58], y: [-28.65, 17.19], z: [-31.51, 40.11] }
+    stiffness: 0
+    damping: 5
+
+  R_Thorax:
+    # robot.xml limits; damping /4 = 5.
+    limits_deg: { x: [-10.89, 4.58], y: [-17.19, 28.65], z: [-40.11, 31.51] }
+    stiffness: 0
+    damping: 5
+
+  Head:
+    # robot.xml limits; damping 2 → /4 = 0.5.
+    limits_deg: { x: [-28.65, 57.3], y: [-40.11, 40.11], z: [-40.11, 40.11] }
+    stiffness: 0
+    damping: 0.5
+
+  L_Shoulder:
+    # robot.xml limits; damping 6 → /4 = 1.5.
+    limits_deg: { x: [-97.4, 97.4], y: [-108.86, 80.21], z: [-97.4, 85.94] }
+    stiffness: 0
+    damping: 1.5
+
+  R_Shoulder:
+    # robot.xml limits; damping /4 = 1.5.
+    limits_deg: { x: [-97.4, 97.4], y: [-80.21, 108.86], z: [-85.94, 97.4] }
+    stiffness: 0
+    damping: 1.5
+
+  L_Elbow:
+    # robot.xml limits; damping 5 → /4 = 1.25.
+    limits_deg: { x: [-17.19, 4.58], y: [-180, 17.19], z: [-100.84, 4.58] }
+    stiffness: 0
+    damping: 1.25
+
+  R_Elbow:
+    # robot.xml limits; damping /4 = 1.25.
+    limits_deg: { x: [-17.19, 4.58], y: [-17.19, 180], z: [-4.58, 100.84] }
+    stiffness: 0
+    damping: 1.25
+
+  L_Wrist:
+    # robot.xml limits; no damping in robot → use 0.5.
+    limits_deg: { x: [-180, 22.92], y: [-17.19, 17.19], z: [-22.92, 22.92] }
+    stiffness: 0
+    damping: 0.5
+
+  R_Wrist:
+    # robot.xml limits; no damping in robot → use 0.5.
+    limits_deg: { x: [-180, 22.92], y: [-17.19, 17.19], z: [-22.92, 22.92] }
+    stiffness: 0
+    damping: 0.5
+
+  L_Index1:
+    # No ref in robot; reasonable MCP: flexion 0–90°, abduction ±20°, damping small.
+    limits_deg: { x: [-5, 5], y: [-20, 20], z: [-90, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  L_Middle1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-5, 5], y: [-20, 20], z: [-90, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  L_Pinky1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-5, 5], y: [-30, 5], z: [-90, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  L_Ring1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-5, 5], y: [-20, 20], z: [-90, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  L_Thumb1:
+    # No ref; reasonable thumb CMC: wider range.
+    limits_deg: { x: [-10, 5], y: [-5, 30], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  R_Index1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-20, 20], y: [-20, 20], z: [-5, 90] }
+    stiffness: 0
+    damping: 0.2
+
+  R_Middle1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-20, 20], y: [-20, 20], z: [-5, 90] }
+    stiffness: 0
+    damping: 0.2
+
+  R_Pinky1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-20, 20], y: [-5, 30], z: [-5, 90] }
+    stiffness: 0
+    damping: 0.2
+
+  R_Ring1:
+    # No ref; reasonable MCP.
+    limits_deg: { x: [-20, 20], y: [-20, 20], z: [-5, 90] }
+    stiffness: 0
+    damping: 0.2
+
+  R_Thumb1:
+    # No ref; reasonable thumb CMC.
+    limits_deg: { x: [-5, 10], y: [-30, 5], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.2
+
+  L_Index2:
+    # No ref; reasonable PIP: flexion 0–100°, small lateral.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-100, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  L_Middle2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-100, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  L_Pinky2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-10, 10], y: [-10, 10], z: [-100, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  L_Ring2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-100, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  L_Thumb2:
+    # No ref; reasonable thumb IP: flexion 0–80°.
+    limits_deg: { x: [-5, 5], y: [-5, 80], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  R_Index2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 100] }
+    stiffness: 0
+    damping: 0.15
+
+  R_Middle2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 100] }
+    stiffness: 0
+    damping: 0.15
+
+  R_Pinky2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-10, 10], y: [-10, 10], z: [-5, 100] }
+    stiffness: 0
+    damping: 0.15
+
+  R_Ring2:
+    # No ref; reasonable PIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 100] }
+    stiffness: 0
+    damping: 0.15
+
+  R_Thumb2:
+    # No ref; reasonable thumb IP.
+    limits_deg: { x: [-5, 5], y: [-80, 5], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.15
+
+  L_Index3:
+    # No ref; reasonable DIP: flexion 0–80°.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-80, 5] }
+    stiffness: 0
+    damping: 0.125
+
+  L_Middle3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-80, 5] }
+    stiffness: 0
+    damping: 0.125
+
+  L_Pinky3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-10, 10], y: [-10, 10], z: [-80, 5] }
+    stiffness: 0
+    damping: 0.125
+
+  L_Ring3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-80, 5] }
+    stiffness: 0
+    damping: 0.125
+
+  L_Thumb3:
+    # No ref; reasonable thumb tip.
+    limits_deg: { x: [-5, 5], y: [-5, 80], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.125
+
+  R_Index3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 80] }
+    stiffness: 0
+    damping: 0.125
+
+  R_Middle3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 80] }
+    stiffness: 0
+    damping: 0.125
+
+  R_Pinky3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-10, 10], y: [-10, 10], z: [-5, 80] }
+    stiffness: 0
+    damping: 0.125
+
+  R_Ring3:
+    # No ref; reasonable DIP.
+    limits_deg: { x: [-5, 5], y: [-5, 5], z: [-5, 80] }
+    stiffness: 0
+    damping: 0.125
+
+  R_Thumb3:
+    # No ref; reasonable thumb tip.
+    limits_deg: { x: [-5, 5], y: [-80, 5], z: [-5, 5] }
+    stiffness: 0
+    damping: 0.125
+
+# ============================================================================
+# SMPLX ORDER MAPPINGS (subset/ordering for SMPLX body and hands)
+# ============================================================================
+
+smplx_body_order:
+  - L_Hip
+  - R_Hip
+  - Torso
+  - L_Knee
+  - R_Knee
+  - Spine
+  - L_Ankle
+  - R_Ankle
+  - Chest
+  - L_Toe
+  - R_Toe
+  - Neck
+  - L_Thorax
+  - R_Thorax
+  - Head
+  - L_Shoulder
+  - R_Shoulder
+  - L_Elbow
+  - R_Elbow
+  - L_Wrist
+  - R_Wrist
+
+smplx_left_hand_order:
+  - L_Index1
+  - L_Index2
+  - L_Index3
+  - L_Middle1
+  - L_Middle2
+  - L_Middle3
+  - L_Pinky1
+  - L_Pinky2
+  - L_Pinky3
+  - L_Ring1
+  - L_Ring2
+  - L_Ring3
+  - L_Thumb1
+  - L_Thumb2
+  - L_Thumb3
+
+smplx_right_hand_order:
+  - R_Index1
+  - R_Index2
+  - R_Index3
+  - R_Middle1
+  - R_Middle2
+  - R_Middle3
+  - R_Pinky1
+  - R_Pinky2
+  - R_Pinky3
+  - R_Ring1
+  - R_Ring2
+  - R_Ring3
+  - R_Thumb1
+  - R_Thumb2
+  - R_Thumb3

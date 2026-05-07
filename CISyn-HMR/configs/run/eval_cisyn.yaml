@@ -1,0 +1,13 @@
+model: fov_unc
+
+pretrain: True
+pretrain_path: 'weights/cisyn_hmr/cisyn_hmr.bin'
+
+eval_datasets_used: ['hi4d', 'chi3d']
+eval_datasets_split: ['test', 'train']
+# force_aspect_ratio: [720, 1280]  # [H, W] — center zero-pad images to this ratio before resize; remove to disable
+eval_vis_num: 20
+conf_thresh: [0.3]
+eval_batch_size: 16
+eval_num_workers: 8
+distributed_eval: True
